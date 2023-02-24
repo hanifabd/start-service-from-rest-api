@@ -1,4 +1,5 @@
 import logging
+import os
 import argparse
 from flask import Flask
 import smtplib
@@ -9,12 +10,12 @@ app = Flask(__name__)
 app.logger.setLevel(logging.DEBUG)
 
 def sendEmail(subject, body):
-    APP_EMAIL="weetanstudio@gmail.com"
-    APP_PASSWORD="upiezhqniqagwhod"
+    APP_EMAIL=os.getenv("EMAIL")
+    APP_PASSWORD=os.getenv("PASSWORD")
 
     email = EmailMessage()
     email["From"] = APP_EMAIL
-    email["To"] = ["hanif.abdillah@jatis.com"]
+    email["To"] = ["xyz@gmail.com"]
     email["Subject"] = subject
     email.set_content(body)
     
